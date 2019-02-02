@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="card_item_radius">16dp</dimen>
+    <dimen name="app_padding">5dp</dimen>
+    <dimen name="list_item_image_size">48dp</dimen>
+    <dimen name="list_item_title_text_size">20sp</dimen>
+    <dimen name="information_text_size">18sp</dimen>
+    <dimen name="list_item_image_text_margin">10dp</dimen>
+    <dimen name="back_forward_button_size">48dp</dimen>
+    <dimen name="back_fwd_button_margin">10dp</dimen>
+    <dimen name="title_information_margin">10dp</dimen>
+    <dimen name="error_message_text_size">22sp</dimen>
+
+    <dimen name="widget_title_text_size">22sp</dimen>
+
+    <dimen name="widget_margin">8dp</dimen>
+    <dimen name="empty_widget_text_size">24sp</dimen>
+    <dimen name="no_video_tablet_image_size">300dp</dimen>
+
+
+    <dimen name="cardview_elevation">20dp</dimen>
+    <dimen name="card_margin">5dp</dimen>
+    <dimen name="card_recipe_radius">4dp</dimen>
+    <dimen name="layout_margin">8dp</dimen>
+    <dimen name="padding_recipe_item">16dp</dimen>
+    <dimen name="text_size_recipe_item">30sp</dimen>
+    <dimen name="cardview_height">200dp</dimen>
+    <dimen name="margin_left_start">4dp</dimen>
+    <dimen name="margin_left_start_quantity">24dp</dimen>
+    <dimen name="ingridient_text_size">15sp</dimen>
+    <dimen name="corner_radius">10dp</dimen>
+    <dimen name="min_height_recipe_step">70dp</dimen>
+    <dimen name="step_text_size">18sp</dimen>
+    <dimen name="recycler_view_ingredients">24dp</dimen>
+    <dimen name="step_fragment_text_size">25sp</dimen>
+</resources>
