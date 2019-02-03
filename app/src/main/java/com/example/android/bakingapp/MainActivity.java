@@ -2,6 +2,10 @@ package com.example.android.bakingapp;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.support.annotation.VisibleForTesting;
+import android.support.test.espresso.IdlingResource;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
@@ -42,6 +46,17 @@ public class MainActivity extends AppCompatActivity implements RecipeAdapter.Lis
     @BindView(R.id.error_getting_data_tv)
     TextView mErrorTv;
 
+    @Nullable
+    private SimpleIdlingResource mIdlingResource;
+
+    @VisibleForTesting
+    @NonNull
+    public IdlingResource getIdlingResource() {
+        if (mIdlingResource == null) {
+            mIdlingResource = new SimpleIdlingResource();
+        }
+        return mIdlingResource;
+    }
     private RecipeAdapter mRecipeAdapter;
 
     @Override
@@ -63,6 +78,8 @@ public class MainActivity extends AppCompatActivity implements RecipeAdapter.Lis
 
         mRecipeAdapter = new RecipeAdapter(this, this);
         mRecyclerView.setAdapter(mRecipeAdapter);
+
+        getIdlingResource();
     }
 
     private int getScreenSize() {

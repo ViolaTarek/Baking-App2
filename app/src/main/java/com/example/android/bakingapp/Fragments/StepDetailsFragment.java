@@ -53,6 +53,9 @@ public class StepDetailsFragment extends Fragment implements ExoPlayer.EventList
     //save instance keys
     private static final String SAVE_INSTANCE_STEP_NUMBER = "step_number";
     private static final String SAVE_INSTANCE_PLAYER_POS = "player_position";
+    private static final String SAVE_INSTANCE_PLAYER_PLAY_WHEN_READY = "play_when_ready";
+
+
     private static final long NO_POSITION_SAVED = -1;
 
     private static MediaSessionCompat mMediaSession;
@@ -78,6 +81,7 @@ public class StepDetailsFragment extends Fragment implements ExoPlayer.EventList
     private PlaybackStateCompat.Builder mStateBuilder;
     //Variable to save exoPlayer position
     private long exoplayerPosition = NO_POSITION_SAVED;
+    private boolean mPlayWhenReady = true;
 
 
     @Nullable
@@ -97,6 +101,9 @@ public class StepDetailsFragment extends Fragment implements ExoPlayer.EventList
             mCurrentStepNumber = savedInstanceState.getInt(SAVE_INSTANCE_STEP_NUMBER);
             if (savedInstanceState.containsKey(SAVE_INSTANCE_PLAYER_POS)) {
                 exoplayerPosition = savedInstanceState.getLong(SAVE_INSTANCE_PLAYER_POS);
+            }
+            if (savedInstanceState.containsKey(SAVE_INSTANCE_PLAYER_PLAY_WHEN_READY)) {
+                mPlayWhenReady = savedInstanceState.getBoolean(SAVE_INSTANCE_PLAYER_PLAY_WHEN_READY);
             }
         }
 
@@ -137,6 +144,9 @@ public class StepDetailsFragment extends Fragment implements ExoPlayer.EventList
         outState.putInt(SAVE_INSTANCE_STEP_NUMBER, mCurrentStepNumber);
         if (exoplayerPosition != NO_POSITION_SAVED) {
             outState.putLong(SAVE_INSTANCE_PLAYER_POS, exoplayerPosition);
+        }
+        if (mPlayWhenReady == true) {
+            outState.putBoolean(SAVE_INSTANCE_PLAYER_PLAY_WHEN_READY, mPlayWhenReady);
         }
     }
 
@@ -222,6 +232,7 @@ public class StepDetailsFragment extends Fragment implements ExoPlayer.EventList
         if (exoplayerPosition != NO_POSITION_SAVED) {
             mExoPlayer.seekTo(exoplayerPosition);
         }
+            mExoPlayer.setPlayWhenReady(mPlayWhenReady);
     }
 
     private MediaSource buildMediaSource(Uri videoUri) {
@@ -260,6 +271,7 @@ public class StepDetailsFragment extends Fragment implements ExoPlayer.EventList
         if (mExoPlayer != null){
 
             exoplayerPosition = mExoPlayer.getCurrentPosition();
+            mPlayWhenReady = mExoPlayer.getPlayWhenReady();
             mExoPlayer.stop();
             mExoPlayer.release();
             mExoPlayer = null;
